@@ -1,0 +1,106 @@
+public class InstrumentTest {
+    public static void main(String[] args) {
+        // Example usage
+        Flute flute = new Flute();
+        Shehnai shehnai = new Shehnai();
+        Tabla tabla = new Tabla();
+        Dhol dhol = new Dhol();
+
+        MusicalEvent.performance5(flute);
+        MusicalEvent.performance5(shehnai);
+        MusicalEvent.performance5(tabla);
+        MusicalEvent.performance5(dhol);
+    }
+}
+
+class MusicalEvent {
+    // Other performance methods...
+
+    static void performance6(AirBasedInstrument a) {
+        a.use();
+        a.blow();
+        a.play();
+    }
+
+    static void performance7(DrumBasedInstrument d) {
+        d.use();
+        d.drum();
+        d.play();
+    }
+}
+
+interface AirBasedInstrument extends Instrument {
+    void blow();
+}
+
+interface DrumBasedInstrument extends Instrument {
+    void drum();
+}
+
+class Flute extends MusicalInstrument implements AirBasedInstrument {
+    @Override
+    public void use() {
+        System.out.println("Using the Flute");
+    }
+
+    @Override
+    void play() {
+        System.out.println("Playing the Flute");
+    }
+
+    @Override
+    public void blow() {
+        System.out.println("Blowing the Flute");
+    }
+}
+
+class Shehnai extends MusicalInstrument implements AirBasedInstrument {
+    @Override
+    public void use() {
+        System.out.println("Using the Shehnai");
+    }
+
+    @Override
+    void play() {
+        System.out.println("Playing the Shehnai");
+    }
+
+    @Override
+    public void blow() {
+        System.out.println("Blowing the Shehnai");
+    }
+}
+
+class Tabla extends MusicalInstrument implements DrumBasedInstrument {
+    @Override
+    public void use() {
+        System.out.println("Using the Tabla");
+    }
+
+    @Override
+    void play() {
+        System.out.println("Playing the Tabla");
+    }
+
+    @Override
+    public void drum() {
+        System.out.println("Drumming on the Tabla");
+    }
+}
+
+class Dhol extends MusicalInstrument implements DrumBasedInstrument {
+    @Override
+    public void use() {
+        System.out.println("Using the Dhol");
+    }
+
+    @Override
+    void play() {
+        System.out.println("Playing the Dhol");
+    }
+
+    @Override
+    public void drum() {
+        System.out.println("Drumming on the Dhol");
+    }
+}
