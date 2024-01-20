@@ -1,0 +1,118 @@
+public class InstrumentTest {
+    public static void main(String[] args) {
+        // Example usage
+        SurgicalCutter surgicalCutter = new SurgicalCutter();
+        SurgicalNeedle surgicalNeedle = new SurgicalNeedle();
+        Glucometer glucometer = new Glucometer();
+        BloodPressureMonitor pressureMonitor = new BloodPressureMonitor();
+        ECGMachine ecgMachine = new ECGMachine();
+
+        MedicalEvent.performSurgery(surgicalCutter);
+        MedicalEvent.performSurgery(surgicalNeedle);
+        MedicalEvent.performMonitoring(glucometer);
+        MedicalEvent.performMonitoring(pressureMonitor);
+        MedicalEvent.performMonitoring(ecgMachine);
+    }
+}
+
+class MedicalEvent {
+    // Other medical event methods...
+
+    static void performSurgery(SurgicalInstrument s) {
+        s.use();
+        s.diagnose();
+        s.sterilize();
+        s.cut();
+        s.stitch();
+    }
+
+    static void performMonitoring(MedicalMonitoringInstrument m) {
+        m.use();
+        m.diagnose();
+        m.measure();
+    }
+}
+
+interface SurgicalInstrument extends Instrument {
+    void cut();
+    void stitch();
+    void sterilize();
+}
+
+interface MedicalMonitoringInstrument extends Instrument {
+    void measure();
+}
+
+class SurgicalCutter extends SurgicalInstrument {
+    @Override
+    public void use() {
+        System.out.println("Using the Surgical Cutter");
+    }
+
+    @Override
+    void diagnose() {
+        System.out.println("Diagnosing the Surgical Cutter");
+    }
+
+    @Override
+    void sterilize() {
+        System.out.println("Sterilizing the Surgical Cutter");
+    }
+
+    @Override
+    public void cut() {
+        System.out.println("Cutting with the Surgical Cutter");
+    }
+
+    @Override
+    public void stitch() {
+        System.out.println("Stitching with the Surgical Cutter");
+    }
+}
+
+class SurgicalNeedle extends SurgicalInstrument {
+    @Override
+    public void use() {
+        System.out.println("Using the Surgical Needle");
+    }
+
+    @Override
+    void diagnose() {
+        System.out.println("Diagnosing the Surgical Needle");
+    }
+
+    @Override
+    void sterilize() {
+        System.out.println("Sterilizing the Surgical Needle");
+    }
+
+    @Override
+    public void cut() {
+        System.out.println("Cutting with the Surgical Needle");
+    }
+
+    @Override
+    public void stitch() {
+        System.out.println("Stitching with the Surgical Needle");
+    }
+}
+
+class Glucometer extends MedicalMonitoringInstrument {
+    @Override
+    public void use() {
+        System.out.println("Using the Glucometer");
+    }
+
+    @Override
+    void diagnose() {
+        System.out.println("Diagnosing with the Glucometer");
+    }
+
+    @Override
+    public void measure() {
+        System.out.println("Measuring glucose with the Glucometer");
+    }
+}
+
+class BloodPressureMonitor extends MedicalMonitoringInstrument {
+   
