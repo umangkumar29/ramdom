@@ -1,0 +1,59 @@
+package rocket.launcher;
+
+import java.util.Random;
+
+import rocket.exception.BoostException;
+import rocket.exception.IgnitionException;
+
+public class RocketLauncher {
+    private boolean ignitionStatus = false;
+    private boolean boostStatus = true;
+
+    public RocketLauncher() throws BoostException {
+        System.out.println("Checking the rocket launcher...");
+        ignite();
+
+        if (ignitionStatus) {
+            System.out.println("Preparing for boost...");
+        } else {
+            BoostException ex = new BoostException("Ignition failed. Cannot proceed with the boost.");
+            throw ex;
+        }
+
+        System.out.println("All systems ready...");
+
+        // Simulating boost check
+        checkBoost();
+    }
+
+    private void ignite() {
+        Random random = new Random();
+        ignitionStatus = random.nextBoolean();
+    }
+
+    private void checkBoost() {
+        Random random = new Random();
+        boostStatus = random.nextBoolean();
+    }
+
+    
+    public void launchRocket() throws IgnitionException {
+        System.out.println("Rocket launch initiated...");
+
+        // Simulating ignition failure
+        if (!ignitionStatus) {
+            IgnitionException ex = new IgnitionException("Rocket ignition failed. Aborting launch.");
+            throw ex;
+        }
+
+        System.out.println("Rocket is in the air...");
+
+        // Simulating boost failure
+        if (!boostStatus) {
+            BoostException ex = new BoostException("Boost failed. Rocket not reaching expected altitude.");
+            throw ex;
+        }
+
+        System.out.println("Rocket launch successful!");
+    }
+}
